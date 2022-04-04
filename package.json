@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "migrate": "sequelize-cli db:migrate"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -22,10 +21,7 @@
     "body-parse": "^0.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
-    "init": "^0.1.2",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15",
-    "sequelize": "^6.18.0",
-    "sequelize-cli": "^6.4.1"
+    "nodemon": "^2.0.15"
   }
 }
