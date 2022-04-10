@@ -1,0 +1,11 @@
+yarn sequelize-cli model:generate --name Users --attributes name:string,cpf:string,cep:integer,reference:string,
+birthdate:date,genre:string,phone_number:integer,email:string
+
+
+yarn sequelize-cli model:generate --name Product --attributes code_product:integer,product_name:string,category:integer,description:string,
+model_year:date,label:string,model:string,price:string,price_unity:string,owner:integer,code_product:integer,qtd_sale:integer,qtd_stars:integer,evaluation:integer,category_id:integer
+
+npx sequelize-cli model:generate --name Product_sale --attributes machines:string,equipaments:string,code_products:integer,code_sale:string
+
+
+npx sequelize-cli model:generate --name Category --attributes title:string,details:string
