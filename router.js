@@ -6,5 +6,6 @@ const routes = express.Router();
 
 routes.get("/users", usersController.listUsers);
 routes.get("/users/:id", usersController.getUser);
+routes.post("/users",  usersController.createUser);
 
 module.exports = routes;
