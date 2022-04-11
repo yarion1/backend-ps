@@ -38,4 +38,12 @@ module.exports = {
             return res.json({msg: `Usuário ${name} não foi atualizado`}, err);
         }
     },
+    async deleteUser(req, res){
+        try {
+            await users.destroy({where: {id: req.params.id }});
+            return res.json({msg: `Exclusão de usuário com ID ${req.params.id} feita com sucesso!`});
+        } catch (err) {
+            return console.err("Erro na exclusão: ", err);
+        }
+    },
 }
