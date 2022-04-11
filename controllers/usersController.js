@@ -26,4 +26,16 @@ module.exports = {
             return console.error('Erro na criação', err);
         }
     },
+    async updateUser(req, res){
+        const Sequelize = require('sequelize');
+        const Op = Sequelize.Op
+        const { name, cpf, cep, reference, birthdate, genre, phone_number, email } = req.body;
+        const id = req.params.id;
+        try {
+            await users.update({name, cpf, cep, reference, birthdate, genre, phone_number, email}, {where: {id: {[Op.eq]: id }}});
+            return res.json({msg: `Usuário ${name} atualizado com sucesso!`});
+        } catch (error) {
+            return res.json({msg: `Usuário ${name} não foi atualizado`}, err);
+        }
+    },
 }
