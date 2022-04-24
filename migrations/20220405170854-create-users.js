@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      adress: {
+      address: {
         type: Sequelize.STRING,
         allowNull: false
       },
