@@ -18,12 +18,12 @@ module.exports = {
         }
     },
     async createProduct(req, res){
-        const {code_product, product_name, category, description, 
+        const {id, product_name, category, description, 
                model_year, label, model, price, price_unity, 
                owner, qtd_sale, qtd_stars, evaluation, category_id} = req.body;
         try {
             const product = await products.create(
-                {code_product, product_name, category, description, 
+                {id, product_name, category, description, 
                 model_year, label, model, price, price_unity, 
                 owner, qtd_sale, qtd_stars, evaluation, category_id
                 });
@@ -35,17 +35,16 @@ module.exports = {
     async updateProduct(req, res){
         const Sequelize = require('sequelize');
         const Op = Sequelize.Op
-        const {code_product, product_name, category, description, 
+        const {id, product_name, category, description, 
                model_year, label, model, price, price_unity, 
                owner, qtd_sale, qtd_stars, evaluation, category_id
               } = req.body;
-        const id = req.params.id;
         try {
             await products.update(
-                {code_product, product_name, category, description, 
+                {id, product_name, category, description, 
                 model_year, label, model, price, price_unity, 
                 owner, qtd_sale, qtd_stars, evaluation, category_id
-                }, {where: {id: {[Op.eq]: id }}});
+                }, {where: {id: {[Op.eq]: req.params.id }}});
             return res.json({msg: `Informações do Produto "${product_name}" atualizado com sucesso!`});
         } catch (error) {
             return res.json({msg: `Produto "${product_name}" não foi atualizado`}, err);

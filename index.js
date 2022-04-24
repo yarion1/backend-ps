@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParse = require("body-parser");
 
 const users = require("./routes/routerUsers");
-// const product = require("./routes/routerProduct");
+const product = require("./routes/routerProduct");
 // const category = require("./routes/routerCategory");
 // const profession = require("./routes/routerProfession");
 // const rentProduct = require("./routes/routerRentProduct");
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(users);
-// app.use(product);
+app.use(product);
 // app.use(category);
 // app.use(profession);
 // app.use(rentProduct);
