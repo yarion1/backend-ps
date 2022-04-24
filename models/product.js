@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.STRING,
     price_unity: DataTypes.STRING,
     owner: DataTypes.INTEGER,
-    code_product: DataTypes.INTEGER,
     qtd_sale: DataTypes.INTEGER,
     qtd_stars: DataTypes.INTEGER,
     evaluation: DataTypes.INTEGER,
@@ -31,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     users_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Product',
+    modelName: 'products',
   });
   return Product;
 };
