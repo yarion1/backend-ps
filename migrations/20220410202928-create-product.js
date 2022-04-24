@@ -2,7 +2,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Products', {
-      id_product: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -54,7 +54,6 @@ module.exports = {
       },
       qtd_stars: {
         type: Sequelize.INTEGER,
-        allowNull: false,
       },
       evaluation: {
         type: Sequelize.INTEGER,
@@ -64,6 +63,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'Categories', key: 'id' }
+      },
+      users_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Users', key: 'id' }
       },
       createdAt: {
         allowNull: false,
