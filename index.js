@@ -5,7 +5,7 @@ const bodyParse = require("body-parser");
 
 const users = require("./routes/routerUsers");
 // const product = require("./routes/routerProduct");
-// const category = require("./routes/routerCategory");
+const categories = require("./routes/routerCategory");
 // const profession = require("./routes/routerProfession");
 // const rentProduct = require("./routes/routerRentProduct");
 // const worker = require("./routes/routerWorker");
@@ -20,7 +20,7 @@ app.use(cors());
 
 app.use(users);
 // app.use(product);
-// app.use(category);
+app.use(categories);
 // app.use(profession);
 // app.use(rentProduct);
 // app.use(worker);
