@@ -24,10 +24,12 @@ module.exports = {
         type: Sequelize.FLOAT
       },
       workers_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Workers', key: 'id' }
       },
       users_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Users', key: 'id' }
       },
       createdAt: {
         allowNull: false,
