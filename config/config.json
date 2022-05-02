@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": "oiOi12345",
+    "password": "",
     "database": "db_useit",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "oiOi12345",
+    "password": "",
     "database": "db_useit",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "oiOi12345",
+    "password": "",
     "database": "db_useit",
     "host": "127.0.0.1",
     "dialect": "mysql"
