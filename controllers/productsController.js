@@ -17,30 +17,6 @@ module.exports = {
             return console.err("Erro na busca: ", err);
         }
     },
-    async getProductsByCategory(req, res) {
-        try {
-            const products = await products.findAll({
-                where: {
-                    category_id: req.params.id_category
-                }
-            });
-            return res.json(products);
-        } catch(error) {
-            return res.json({error, msg: "Não foi possível listar produtos por categoria"});
-        }
-    },
-    async getProductsByUser(req, res) {
-        try {
-            const products = await products.findAll({
-                where: {
-                    users_id: req.params.id_user
-                }
-            });
-            return res.json(products);
-        } catch(error) {
-            return res.json({error, msg: "Não foi possível listar produtos por usuário"});
-        }
-    },
     async createProduct(req, res){
         const {product_name, category, description, 
                model_year, label, model, price, price_unity, 
