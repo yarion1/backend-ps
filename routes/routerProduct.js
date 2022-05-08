@@ -6,8 +6,8 @@ const routes = express.Router();
 
 routes.get("/products", productsController.listProducts);
 routes.get("/products/:id", productsController.getProduct);
-routes.get("/products/:id_category", productsController.getProductsByCategory);
-routes.get("/products/:id_user", productsController.getProductsByUser);
+routes.get("/products/id_category", productsController.getProductsByCategory);
+routes.get("/products/id_user", productsController.getProductsByUser);
 routes.post("/products",  productsController.createProduct);
 routes.put("/products/:id", productsController.updateProduct);
 routes.delete("/products/:id", productsController.deleteProduct);
