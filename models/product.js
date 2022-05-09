@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    code_product: DataTypes.INTEGER,
     product_name: DataTypes.STRING,
     category: DataTypes.INTEGER,
     description: DataTypes.STRING,
@@ -24,14 +23,14 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.STRING,
     price_unity: DataTypes.STRING,
     owner: DataTypes.INTEGER,
-    code_product: DataTypes.INTEGER,
     qtd_sale: DataTypes.INTEGER,
     qtd_stars: DataTypes.INTEGER,
     evaluation: DataTypes.INTEGER,
-    category_id: DataTypes.INTEGER
+    category_id: DataTypes.INTEGER,
+    users_id: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Product',
+    modelName: 'products',
   });
   return Product;
 };
