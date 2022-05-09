@@ -8,7 +8,6 @@ const product = require("./routes/routerProduct");
 // const category = require("./routes/routerCategory");
 // const profession = require("./routes/routerProfession");
 // const rentProduct = require("./routes/routerRentProduct");
-// const worker = require("./routes/routerWorker");
 const auth = require('./routes/routerAuth')
 
 const app = express();
@@ -24,8 +23,8 @@ app.use(product);
 // app.use(category);
 // app.use(profession);
 // app.use(rentProduct);
-// app.use(worker);
 app.use(auth);
+
 
 app.listen(port, () => {
   console.log(`Express start at http://localhost:${port}`);
