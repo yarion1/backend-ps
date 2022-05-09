@@ -23,6 +23,7 @@ module.exports = {
       profession_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: { model: 'Professions', key: 'id' }
       },
       user_id: {
         type: Sequelize.INTEGER,
