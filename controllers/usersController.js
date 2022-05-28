@@ -44,7 +44,7 @@ module.exports = {
     try {
       const user = await users.create({
         name,
-        password,
+        password: await bcryptjs.hash(password, 10),
         address,
         rate,
         type_user,
