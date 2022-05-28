@@ -1,3 +1,4 @@
+const bcryptjs = require("bcryptjs");
 const { users } = require("../models/mainModel");
 
 module.exports = {
@@ -14,7 +15,15 @@ module.exports = {
       const user = await users.findOne({ where: { id: req.params.id } });
       return res.json(user);
     } catch (err) {
-      return console.err("Erro na busca: ", err);
+      return console.log("Erro na busca: ", err);
+    }
+  },
+  async getUserByEmail(req, res) {
+    try {
+      const user = await users.findOne({ where: { email: req.email } });
+      return user;
+    } catch (err) {
+      return console.log("Erro na busca: ", err);
     }
   },
   async createUser(req, res) {
@@ -30,6 +39,7 @@ module.exports = {
       genre,
       phone_number,
       email,
+      token,
     } = req.body;
     try {
       const user = await users.create({
@@ -44,9 +54,10 @@ module.exports = {
         genre,
         phone_number,
         email,
+        token,
       });
       return res.json(user);
-    } catch (error) {
+    } catch (err) {
       return console.error("Erro na criação", err);
     }
   },
@@ -68,6 +79,7 @@ module.exports = {
       email,
     } = req.body;
     const id = req.params.id;
+    encryptedPassword = await bcryptjs.hash(password, 10);
     try {
       await users.update(
         {
