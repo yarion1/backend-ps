@@ -1,5 +1,4 @@
 require("dotenv").config();
-require("./config/database").connect();
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -14,13 +13,39 @@ app.use(express.json({ limit: "50mb" }));
 module.exports = {
   async register(req, res) {
     try {
-      const { first_name, last_name, email, password } = req.body;
+      const {
+        name,
+        password,
+        address,
+        rate,
+        type_user,
+        cpf,
+        cep,
+        birthdate,
+        genre,
+        phone_number,
+        email,
+      } = req.body;
 
-      if (!(email && password && first_name && last_name)) {
-        res.status(400).send("All input is required");
+      if (
+        !(
+          name &&
+          password &&
+          address &&
+          rate &&
+          type_user &&
+          cpf &&
+          cep &&
+          birthdate &&
+          genre &&
+          phone_number &&
+          email
+        )
+      ) {
+        res.status(400).send("Todos os campos são obrigatórios");
       }
 
-      const oldUser = await users.getUser({ email });
+      const oldUser = await users.getUserByEmail({ email });
 
       if (oldUser) {
         return res
@@ -30,8 +55,7 @@ module.exports = {
 
       encryptedPassword = await bcrypt.hash(password, 10);
 
-      const user = await users.createUser(req, res)
-
+      const user = await users.createUser(req, res);
       const token = jwt.sign(
         { user_id: user.id, email },
         process.env.TOKEN_KEY,
@@ -42,7 +66,7 @@ module.exports = {
 
       user.token = token;
 
-      res.status(201).json(user);
+      return res.status(201).json(user);
     } catch (err) {
       console.log(err);
     }
@@ -56,8 +80,7 @@ module.exports = {
         res.status(400).send("Todos os campos são obrigatórios");
       }
 
-      const user = await users.getUser({ email });
-
+      const user = await users.getUserByEmail({ email });
       if (user && (await bcrypt.compare(password, user.password))) {
         const token = jwt.sign(
           { user_id: user.id, email },
@@ -69,9 +92,9 @@ module.exports = {
 
         user.token = token;
 
-        res.status(200).json(user);
+        return res.status(200).json(user);
       }
-      res.status(400).send("Crednciais inválidas");
+      res.status(400).send("Credenciais inválidas");
     } catch (err) {
       console.log(err);
     }
