@@ -99,4 +99,15 @@ module.exports = {
       console.log(err);
     }
   },
+
+  async verifyEmail(req, res) {
+    const { email } = req.body;
+    const oldUser = await users.getUserByEmail({ email });
+
+    if (oldUser) {
+      return res.status(409).send(true);
+    } else {
+      res.status(404).send(false);
+    }
+  },
 };
