@@ -21,7 +21,7 @@ module.exports = {
     const {
       name,
       password,
-      adress,
+      address,
       rate,
       type_user,
       cpf,
@@ -35,7 +35,7 @@ module.exports = {
       const user = await users.create({
         name,
         password,
-        adress,
+        address,
         rate,
         type_user,
         cpf,
@@ -56,7 +56,7 @@ module.exports = {
     const {
       name,
       password,
-      adress,
+      address,
       rate,
       type_user,
       cpf,
@@ -73,7 +73,7 @@ module.exports = {
         {
           name,
           password,
-          adress,
+          address,
           rate,
           type_user,
           cpf,
