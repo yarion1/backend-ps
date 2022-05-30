@@ -3,6 +3,7 @@ const { Users } = require("../models/mainModel");
 
 module.exports = {
   async listUsers(req, res) {
+    // #swagger.tags = ['Users']
     try {
       const data = await Users.findAll();
       return res.json(data);
@@ -11,6 +12,7 @@ module.exports = {
     }
   },
   async getUser(req, res) {
+    // #swagger.tags = ['Users']
     try {
       const user = await Users.findOne({ where: { id: req.params.id } });
       return res.json(user);
@@ -19,6 +21,7 @@ module.exports = {
     }
   },
   async getUserByEmail(req, res) {
+    // #swagger.tags = ['Users']
     try {
       const user = await Users.findOne({ where: { email: req.email } });
       return user;
@@ -27,6 +30,7 @@ module.exports = {
     }
   },
   async createUser(req, res) {
+    // #swagger.tags = ['Users']
     const {
       name,
       password,
@@ -62,6 +66,7 @@ module.exports = {
     }
   },
   async updateUser(req, res) {
+    // #swagger.tags = ['Users']
     const Sequelize = require("sequelize");
     const Op = Sequelize.Op;
     const {
@@ -103,6 +108,7 @@ module.exports = {
     }
   },
   async deleteUser(req, res) {
+    // #swagger.tags = ['Users']
     try {
       await users.destroy({ where: { id: req.params.id } });
       return res.json({

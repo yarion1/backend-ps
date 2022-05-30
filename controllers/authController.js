@@ -12,6 +12,7 @@ app.use(express.json({ limit: "50mb" }));
 
 module.exports = {
   async register(req, res) {
+    // #swagger.tags = ['Auth']
     try {
       const {
         name,
@@ -73,6 +74,7 @@ module.exports = {
   },
 
   async login(req, res) {
+    // #swagger.tags = ['Auth']
     try {
       const { email, password } = req.body;
 
@@ -101,6 +103,7 @@ module.exports = {
   },
 
   async verifyEmail(req, res) {
+    // #swagger.tags = ['Auth']
     const { email } = req.body;
     const oldUser = await users.getUserByEmail({ email });
 
