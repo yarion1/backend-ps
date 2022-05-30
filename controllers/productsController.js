@@ -2,6 +2,7 @@ const {products} = require('../models/mainModel');
 
 module.exports = {
     async listProducts(req, res){
+        // #swagger.tags = ['Products']
         try {
             const data = await products.findAll()
             return res.json(data);
@@ -10,6 +11,7 @@ module.exports = {
         }
     },
     async getProduct(req, res){
+        // #swagger.tags = ['Products']
         try {
             const product = await products.findOne({where: {id: req.params.id}});
             return res.json(product);
@@ -18,6 +20,7 @@ module.exports = {
         }
     },
     async getProductsByCategory(req, res) {
+        // #swagger.tags = ['Products']
         try {
             const products = await products.findAll({
                 where: {
@@ -30,6 +33,7 @@ module.exports = {
         }
     },
     async getProductsByUser(req, res) {
+        // #swagger.tags = ['Products']
         try {
             const products = await products.findAll({
                 where: {
@@ -42,6 +46,7 @@ module.exports = {
         }
     },
     async createProduct(req, res){
+        // #swagger.tags = ['Products']
         const {product_name, category, description, 
                model_year, label, model, price, price_unity, 
                owner, qtd_sale, qtd_stars, evaluation, users_id, category_id} = req.body;
@@ -57,6 +62,7 @@ module.exports = {
         }
     },
     async updateProduct(req, res){
+        // #swagger.tags = ['Products']
         const Sequelize = require('sequelize');
         const Op = Sequelize.Op
         const {id, product_name, category, description, 
@@ -75,6 +81,7 @@ module.exports = {
         }
     },
     async deleteProduct(req, res){
+        // #swagger.tags = ['Products']
         try {
             await products.destroy({where: {id: req.params.id }});
             return res.json({msg: `Exclusão do produto com ID ${req.params.id} feita com sucesso!`});

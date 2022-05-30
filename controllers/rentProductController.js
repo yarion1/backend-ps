@@ -2,6 +2,7 @@ const { RentProduct } = require('../models/mainModel');
 
 module.exports = {
     async listRentProduct(req, res) {
+        // #swagger.tags = ['Rent Product']
         try {
             const data = await RentProduct.findAll()
             return res.json(data);
@@ -10,6 +11,7 @@ module.exports = {
         }
     },
     async getRentProduct(req, res) {
+        // #swagger.tags = ['Rent Product']
         try {
             const rentProduct = await RentProduct.findOne({ where: { id: req.params.id } });
             return res.json(rentProduct);
@@ -18,6 +20,7 @@ module.exports = {
         }
     },
     async createRentProduct(req, res) {
+        // #swagger.tags = ['Rent Product']
         const { machines, equipaments, code_product, product_id } = req.body;
         try {
             const rentProduct = await RentProduct.create({
@@ -32,6 +35,7 @@ module.exports = {
         }
     },
     async updateRentProduct(req, res) {
+        // #swagger.tags = ['Rent Product']
         const { machines, equipaments, code_product, product_id } = req.body;
 
         try {
@@ -52,6 +56,7 @@ module.exports = {
         }
     },
     async deleteRentProduct(req, res) {
+        // #swagger.tags = ['Rent Product']
         try {
             await RentProduct.destroy({ where: { id: req.params.id } });
             return res.json({ msg: `Exclusão de aluguel ${req.params.id} feita com sucesso!` });

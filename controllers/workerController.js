@@ -2,6 +2,7 @@ const { Worker } = require("../models/mainModel");
 
 module.exports = {
     async listWorkers(req, res) {
+        // #swagger.tags = ['Workers']
         try {
             const data = await Worker.findAll();
             return res.json(data);
@@ -10,6 +11,7 @@ module.exports = {
         }
     },
     async getWorker(req, res, next) {
+         // #swagger.tags = ['Workers']
         try {
             const data = await Worker.findOne({
                 where: {
@@ -22,6 +24,7 @@ module.exports = {
         }
     },
     async createWorker(req, res) {
+         // #swagger.tags = ['Workers']
         const {code_user, profession, description, profession_id, user_id} = req.body;
 
         try {
@@ -38,6 +41,7 @@ module.exports = {
         }
     },
     async updateWorker(req, res) {
+         // #swagger.tags = ['Workers']
         try {
             const data = await Worker.update({
                 profession,
@@ -54,6 +58,7 @@ module.exports = {
         }
     },
     async deleteWorker(req, res) {
+         // #swagger.tags = ['Workers']
         try {
             const data = await Worker.destroy({
                 where: {

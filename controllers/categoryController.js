@@ -2,6 +2,7 @@ const {Category} = require('../models/mainModel');
 
 module.exports = {
     async listCategories(req, res){
+        // #swagger.tags = ['Categories']
         try {
             const data = await Category.findAll()
             return res.json(data);
@@ -10,6 +11,7 @@ module.exports = {
         }
     },
     async getCategory(req, res){
+        // #swagger.tags = ['Categories']
         try {
             const categories = await Category.findOne({where: {id: req.params.id}});
             return res.json(categories);
@@ -18,6 +20,7 @@ module.exports = {
         }
     },
     async createCategory(req, res){
+        // #swagger.tags = ['Categories']
         const {title, details} = req.body;
         try {
             const categories = await Category.create({
@@ -30,6 +33,7 @@ module.exports = {
         }
     },
     async updateCategory(req, res){
+        // #swagger.tags = ['Categories']
         const Sequelize = require('sequelize');
         const Op = Sequelize.Op
         const {title, details} = req.body;
@@ -42,6 +46,7 @@ module.exports = {
         }
     },
     async deleteCategory(req, res){
+        // #swagger.tags = ['Categories']
         try {
             await Category.destroy({where: {id: req.params.id }});
             return res.json({msg: `Exclusão da categoria ${req.params.id} feita com sucesso!`});
