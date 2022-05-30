@@ -22,7 +22,7 @@ app.use(users);
 // app.use(product);
 app.use(category);
 app.use(profession);
-// app.use(rentProduct);
+app.use(rentProduct);
 app.use(auth);
 
 
