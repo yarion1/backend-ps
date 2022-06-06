@@ -7,7 +7,7 @@ module.exports = {
             const data = await Category.findAll()
             return res.json(data);
         } catch (err) {
-            return console.error("Erro na listagem: ", err);
+            return console.log("Erro na listagem: ", err);
         }
     },
     async getCategory(req, res){
@@ -16,7 +16,7 @@ module.exports = {
             const categories = await Category.findOne({where: {id: req.params.id}});
             return res.json(categories);
         } catch (err) {
-            return console.err("Erro na busca: ", err);
+            return console.log("Erro na busca: ", err);
         }
     },
     async createCategory(req, res){
@@ -29,7 +29,7 @@ module.exports = {
             });
             return res.json(categories);
           } catch (error) {
-            return console.error('Erro na criação', error);
+            return console.log('Erro na criação', error);
         }
     },
     async updateCategory(req, res){
@@ -51,7 +51,7 @@ module.exports = {
             await Category.destroy({where: {id: req.params.id }});
             return res.json({msg: `Exclusão da categoria ${req.params.id} feita com sucesso!`});
         } catch (err) {
-            return console.err("Erro na exclusão: ", err);
+            return console.log("Erro na exclusão: ", err);
         }
     },
 }

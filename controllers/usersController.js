@@ -8,7 +8,7 @@ module.exports = {
       const data = await Users.findAll();
       return res.json(data);
     } catch (err) {
-      return console.error("Erro na listagem: ", err);
+      return console.log("Erro na listagem: ", err);
     }
   },
   async getUser(req, res) {
@@ -62,7 +62,7 @@ module.exports = {
       });
       return user;
     } catch (err) {
-      return console.error("Erro na criação", err);
+      return console.log("Erro na criação", err);
     }
   },
   async updateUser(req, res) {
@@ -110,12 +110,12 @@ module.exports = {
   async deleteUser(req, res) {
     // #swagger.tags = ['Users']
     try {
-      await users.destroy({ where: { id: req.params.id } });
+      await Users.destroy({ where: { id: req.params.id } });
       return res.json({
         msg: `Exclusão de usuário com ID ${req.params.id} feita com sucesso!`,
       });
     } catch (err) {
-      return console.err("Erro na exclusão: ", err);
+      return console.log("Erro na exclusão: ", err);
     }
   },
 };
