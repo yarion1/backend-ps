@@ -7,7 +7,7 @@ module.exports = {
             const data = await RentProduct.findAll()
             return res.json(data);
         } catch (err) {
-            return console.error("Erro na listagem: ", err);
+            return console.log("Erro na listagem: ", err);
         }
     },
     async getRentProduct(req, res) {
@@ -16,7 +16,7 @@ module.exports = {
             const rentProduct = await RentProduct.findOne({ where: { id: req.params.id } });
             return res.json(rentProduct);
         } catch (err) {
-            return console.err("Erro na busca: ", err);
+            return console.log("Erro na busca: ", err);
         }
     },
     async createRentProduct(req, res) {
@@ -31,7 +31,7 @@ module.exports = {
             });
             return res.json(rentProduct);
         } catch (error) {
-            return console.error('Erro na criação', error);
+            return console.log('Erro na criação', error);
         }
     },
     async updateRentProduct(req, res) {
@@ -61,7 +61,7 @@ module.exports = {
             await RentProduct.destroy({ where: { id: req.params.id } });
             return res.json({ msg: `Exclusão de aluguel ${req.params.id} feita com sucesso!` });
         } catch (err) {
-            return console.err("Erro na exclusão: ", err);
+            return console.log("Erro na exclusão: ", err);
         }
     },
 }

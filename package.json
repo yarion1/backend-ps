@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pm2": "pm2 start processes.json --no-daemon",
-    "start": "node index.js",
-    "dev": " nodemon index.js",
+    "pm2": "node ./utils/swagger-gen.js && pm2 start processes.json --no-daemon",
+    "start": "node ./utils/swagger-gen.js && node index.js",
+    "dev": " node ./utils/swagger-gen.js && nodemon index.js",
     "migrate": "sequelize-cli db:migrate",
-    "deploy": "sequelize-cli db:migrate && pm2 start processes.json --no-daemon"
+    "deploy": "node ./utils/swagger-gen.js && sequelize-cli db:migrate && pm2 start processes.json --no-daemon"
   },
   "repository": {
     "type": "git",

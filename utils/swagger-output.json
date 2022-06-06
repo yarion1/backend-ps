@@ -113,11 +113,7 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "responses": {}
       }
     },
     "/users/{id}": {

@@ -7,7 +7,7 @@ module.exports = {
             const data = await products.findAll()
             return res.json(data);
         } catch (err) {
-            return console.error("Erro na listagem: ", err);
+            return console.log("Erro na listagem: ", err);
         }
     },
     async getProduct(req, res){
@@ -16,7 +16,7 @@ module.exports = {
             const product = await products.findOne({where: {id: req.params.id}});
             return res.json(product);
         } catch (err) {
-            return console.err("Erro na busca: ", err);
+            return console.log("Erro na busca: ", err);
         }
     },
     async getProductsByCategory(req, res) {
@@ -58,7 +58,7 @@ module.exports = {
                 });
             return res.json(product);
         } catch (error) {
-            return console.error('Erro na criação', error);
+            return console.log('Erro na criação', error);
         }
     },
     async updateProduct(req, res){
@@ -86,7 +86,7 @@ module.exports = {
             await products.destroy({where: {id: req.params.id }});
             return res.json({msg: `Exclusão do produto com ID ${req.params.id} feita com sucesso!`});
         } catch (err) {
-            return console.err("Erro na exclusão: ", err);
+            return console.log("Erro na exclusão: ", err);
         }
     },
 }
