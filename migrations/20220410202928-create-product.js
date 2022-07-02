@@ -12,10 +12,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      category: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
       description: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -38,14 +34,6 @@ module.exports = {
       },
       price_unity: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      owner: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      code_product: {
-        type: Sequelize.INTEGER,
         allowNull: false,
       },
       qtd_sale: {

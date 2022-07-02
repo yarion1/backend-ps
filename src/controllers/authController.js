@@ -96,7 +96,7 @@ module.exports = {
 
         return res.status(200).json(user);
       }
-      res.status(400).send("Credenciais inválidas");
+      res.status(401).send("Credenciais inválidas");
     } catch (err) {
       console.log(err);
     }
@@ -110,7 +110,7 @@ module.exports = {
     if (oldUser) {
       return res.status(409).send(true);
     } else {
-      res.status(404).send(false);
+      res.status(200).send(false);
     }
   },
 };

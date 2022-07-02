@@ -57,16 +57,8 @@ const doc = {
   components: {}, // by default: empty object (OpenAPI 3.x)
 };
 
-const outputFile = "./utils/swagger-output.json";
-const endpointsFiles = [
-  "./routes/routerUsers.js",
-  "./routes/routerAuth.js",
-  "./routes/routerProduct.js",
-  "./routes/routerProfession.js",
-  "./routes/routerCategory.js",
-  "./routes/routerRentProduct.js",
-  "./routes/routerWorker.js"
-];
+const outputFile = "./src/utils/swagger-output.json";
+const endpointsFiles = ["./src/routes/routes.js"];
 
 /* NOTE: if you use the express Router, you must pass in the 
    'endpointsFiles' only the root file where the route starts,
