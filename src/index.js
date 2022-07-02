@@ -6,12 +6,7 @@ const bodyParse = require("body-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./utils/swagger-output.json");
 
-const users = require("./routes/routerUsers");
-const product = require("./routes/routerProduct");
-const category = require("./routes/routerCategory");
-const profession = require("./routes/routerProfession");
-const rentProduct = require("./routes/routerRentProduct");
-const auth = require("./routes/routerAuth");
+const routes = require("./routes/routes");
 
 const app = express();
 const port = 5000;
@@ -21,12 +16,7 @@ app.use(bodyParse.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-app.use(users);
-app.use(product);
-app.use(category);
-app.use(profession);
-app.use(rentProduct);
-app.use(auth);
+app.use(routes);
 
 app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
