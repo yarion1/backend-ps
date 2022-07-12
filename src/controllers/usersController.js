@@ -2,17 +2,15 @@ const bcryptjs = require("bcryptjs");
 const { users } = require("../models/mainModel");
 
 module.exports = {
-  async listusers(req, res) {
-    // #swagger.tags = ['users']
+  async listUsers(req, res) {
     try {
       const data = await users.findAll();
       return res.json(data);
     } catch (err) {
-      return console.log("Erro na listagem: ", err);
+      return console.error("Erro na listagem: ", err);
     }
   },
   async getUser(req, res) {
-    // #swagger.tags = ['users']
     try {
       const user = await users.findOne({ where: { id: req.params.id } });
       return res.json(user);
@@ -29,7 +27,6 @@ module.exports = {
     }
   },
   async createUser(req, res) {
-    // #swagger.tags = ['users']
     const {
       name,
       password,
@@ -65,7 +62,6 @@ module.exports = {
     }
   },
   async updateUser(req, res) {
-    // #swagger.tags = ['users']
     const Sequelize = require("sequelize");
     const Op = Sequelize.Op;
     const {
@@ -108,14 +104,13 @@ module.exports = {
     }
   },
   async deleteUser(req, res) {
-    // #swagger.tags = ['users']
     try {
       await users.destroy({ where: { id: req.params.id } });
       return res.json({
         msg: `Exclusão de usuário com ID ${req.params.id} feita com sucesso!`,
       });
     } catch (err) {
-      return console.log("Erro na exclusão: ", err);
+      return console.err("Erro na exclusão: ", err);
     }
   },
 };

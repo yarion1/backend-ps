@@ -1,4 +1,4 @@
-const {Category} = require('..//models/mainModel');
+const {Category} = require('../models/mainModel');
 
 module.exports = {
     async listCategories(req, res){
