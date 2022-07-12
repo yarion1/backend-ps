@@ -2,7 +2,6 @@ const { Profession } = require("../models/mainModel");
 
 module.exports = {
   async listProfessions(req, res) {
-    // #swagger.tags = ['Professions']
     try {
       const data = await Profession.findAll();
       return res.json(data);
@@ -11,7 +10,6 @@ module.exports = {
     }
   },
   async getProfession(req, res) {
-    // #swagger.tags = ['Professions']
     try {
       const data = await Profession.findOne({
         where: {
@@ -24,7 +22,6 @@ module.exports = {
     }
   },
   async createProfession(req, res) {
-    // #swagger.tags = ['Professions']
     const { name } = req.body;
 
     try {
@@ -37,7 +34,6 @@ module.exports = {
     }
   },
   async updateProfession(req, res) {
-    // #swagger.tags = ['Professions']
     const Sequelize = require("sequelize");
     const Op = Sequelize.Op;
     const id = req.params.id;
@@ -55,7 +51,6 @@ module.exports = {
     }
   },
   async deleteProfession(req, res) {
-    // #swagger.tags = ['Professions']
     try {
       const data = await Profession.destroy({
         where: {
