@@ -61,6 +61,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      users_name:{
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE

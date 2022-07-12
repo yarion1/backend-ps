@@ -12,7 +12,6 @@ app.use(express.json({ limit: "50mb" }));
 
 module.exports = {
   async register(req, res) {
-    // #swagger.tags = ['Auth']
     try {
       const {
         name,
@@ -74,7 +73,6 @@ module.exports = {
   },
 
   async login(req, res) {
-    // #swagger.tags = ['Auth']
     try {
       const { email, password } = req.body;
 
@@ -96,14 +94,13 @@ module.exports = {
 
         return res.status(200).json(user);
       }
-      res.status(401).send("Credenciais inválidas");
+      res.status(400).send("Credenciais inválidas");
     } catch (err) {
       console.log(err);
     }
   },
 
   async verifyEmail(req, res) {
-    // #swagger.tags = ['Auth']
     const { email } = req.body;
     const oldUser = await users.getUserByEmail({ email });
 

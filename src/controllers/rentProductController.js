@@ -1,67 +1,70 @@
-const { RentProduct } = require('../models/mainModel');
+const { ProductRents } = require('../models/mainModel');
 
 module.exports = {
     async listRentProduct(req, res) {
-        // #swagger.tags = ['Rent Product']
         try {
-            const data = await RentProduct.findAll()
+            const data = await ProductRents.findAll()
             return res.json(data);
         } catch (err) {
-            return console.log("Erro na listagem: ", err);
+            return console.error("Erro na listagem: ", err);
         }
     },
     async getRentProduct(req, res) {
-        // #swagger.tags = ['Rent Product']
-        try {
-            const rentProduct = await RentProduct.findOne({ where: { id: req.params.id } });
-            return res.json(rentProduct);
-        } catch (err) {
-            return console.log("Erro na busca: ", err);
-        }
+          // #swagger.tags = ['Products']
+    try {
+        const products = await ProductRents.findAll({
+          where: {
+            users_id: req.params.id,
+          },
+        });
+        return res.json(products);
+      } catch (error) {
+        return res.json({
+          error,
+          msg: "Não foi possível listar produtos alugados por usuário",
+        });
+      }
     },
     async createRentProduct(req, res) {
-        // #swagger.tags = ['Rent Product']
-        const { machines, equipaments, code_product, product_id } = req.body;
+        const { name_equipament,users_name,phone,product_id, price, description, users_id } = req.body;
         try {
-            const rentProduct = await RentProduct.create({
-                machines,
-                equipaments,
-                code_product,
-                product_id
+            const rentProduct = await ProductRents.create({
+                name_equipament,users_name,phone,product_id,
+                price,
+                description,
+                users_id
             });
-            return res.json(rentProduct);
+            return res.json(ProductRents);
         } catch (error) {
-            return console.log('Erro na criação', error);
+            return console.error('Erro na criação', error);
         }
     },
     async updateRentProduct(req, res) {
-        // #swagger.tags = ['Rent Product']
-        const { machines, equipaments, code_product, product_id } = req.body;
+        const { name_equipament,users_name,phone,product_id, price, description, users_id } = req.body;
 
         try {
-            const rentProduct = await RentProduct.update({
-                machines,
-                equipaments,
-                code_product,
-                product_id
+            const rentProduct = await ProductRents.update({
+                name_equipament,users_name,phone,product_id,
+                price,
+                description,
+                users_id
             }, {
                 where: {
                     id: req.params.id
                 }
             });
 
-            return res.json({ msg: `Informações do aluguel "${equipaments}" atualizadas com sucesso!` });
+            return res.json({ msg: `Informações do aluguel "${price}" atualizadas com sucesso!` });
         } catch (error) {
-            return res.json({ msg: `aluguel "${equipaments}" não foi atualizado` }, error);
+            return res.json({ msg: `aluguel "${price}" não foi atualizado` }, error);
         }
     },
     async deleteRentProduct(req, res) {
-        // #swagger.tags = ['Rent Product']
         try {
             await RentProduct.destroy({ where: { id: req.params.id } });
             return res.json({ msg: `Exclusão de aluguel ${req.params.id} feita com sucesso!` });
         } catch (err) {
-            return console.log("Erro na exclusão: ", err);
+            return console.err("Erro na exclusão: ", err);
         }
     },
 }

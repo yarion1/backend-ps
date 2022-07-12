@@ -113,7 +113,11 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/{id}": {
@@ -269,6 +273,9 @@
                 "qtd_sale": {
                   "example": "any"
                 },
+                "users_name": {
+                  "example": "any"
+                },
                 "qtd_stars": {
                   "example": "any"
                 },
@@ -357,6 +364,9 @@
                 "qtd_sale": {
                   "example": "any"
                 },
+                "users_name": {
+                  "example": "any"
+                },
                 "qtd_stars": {
                   "example": "any"
                 },
@@ -399,7 +409,7 @@
         }
       }
     },
-    "/products/{id_category}": {
+    "/productscategory/{id_category}": {
       "get": {
         "tags": [
           "Products"
@@ -420,7 +430,7 @@
         }
       }
     },
-    "/products/{id_user}": {
+    "/productsuser/{id_user}": {
       "get": {
         "tags": [
           "Products"
@@ -443,9 +453,6 @@
     },
     "/categories": {
       "get": {
-        "tags": [
-          "Categories"
-        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -455,9 +462,6 @@
         }
       },
       "post": {
-        "tags": [
-          "Categories"
-        ],
         "description": "",
         "parameters": [
           {
@@ -485,9 +489,6 @@
     },
     "/categories/{id}": {
       "get": {
-        "tags": [
-          "Categories"
-        ],
         "description": "",
         "parameters": [
           {
@@ -504,9 +505,6 @@
         }
       },
       "put": {
-        "tags": [
-          "Categories"
-        ],
         "description": "",
         "parameters": [
           {
@@ -538,9 +536,6 @@
         }
       },
       "delete": {
-        "tags": [
-          "Categories"
-        ],
         "description": "",
         "parameters": [
           {
@@ -669,9 +664,6 @@
     },
     "/rent_product": {
       "get": {
-        "tags": [
-          "Rent Product"
-        ],
         "description": "",
         "parameters": [],
         "responses": {
@@ -681,9 +673,6 @@
         }
       },
       "post": {
-        "tags": [
-          "Rent Product"
-        ],
         "description": "",
         "parameters": [
           {
@@ -692,16 +681,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "machines": {
+                "name_equipament": {
                   "example": "any"
                 },
-                "equipaments": {
+                "users_name": {
                   "example": "any"
                 },
-                "code_product": {
+                "phone": {
                   "example": "any"
                 },
                 "product_id": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "users_id": {
                   "example": "any"
                 }
               }
@@ -718,7 +716,7 @@
     "/rent_product/{id}": {
       "get": {
         "tags": [
-          "Rent Product"
+          "Products"
         ],
         "description": "",
         "parameters": [
@@ -736,9 +734,6 @@
         }
       },
       "put": {
-        "tags": [
-          "Rent Product"
-        ],
         "description": "",
         "parameters": [
           {
@@ -753,16 +748,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "machines": {
+                "name_equipament": {
                   "example": "any"
                 },
-                "equipaments": {
+                "users_name": {
                   "example": "any"
                 },
-                "code_product": {
+                "phone": {
                   "example": "any"
                 },
                 "product_id": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "users_id": {
                   "example": "any"
                 }
               }
@@ -776,9 +780,6 @@
         }
       },
       "delete": {
-        "tags": [
-          "Rent Product"
-        ],
         "description": "",
         "parameters": [
           {
@@ -909,9 +910,6 @@
     },
     "/login": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
         "description": "",
         "parameters": [
           {
@@ -936,18 +934,12 @@
           },
           "400": {
             "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
           }
         }
       }
     },
     "/register": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
         "description": "",
         "parameters": [
           {
@@ -1008,9 +1000,6 @@
     },
     "/verify-email": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
         "description": "",
         "parameters": [
           {
