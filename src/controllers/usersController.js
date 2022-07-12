@@ -1,10 +1,10 @@
 const bcryptjs = require("bcryptjs");
-const { Users } = require("../models/mainModel");
+const { users } = require("../models/mainModel");
 
 module.exports = {
   async listUsers(req, res) {
     try {
-      const data = await Users.findAll();
+      const data = await users.findAll();
       return res.json(data);
     } catch (err) {
       return console.error("Erro na listagem: ", err);
@@ -12,7 +12,7 @@ module.exports = {
   },
   async getUser(req, res) {
     try {
-      const user = await Users.findOne({ where: { id: req.params.id } });
+      const user = await users.findOne({ where: { id: req.params.id } });
       return res.json(user);
     } catch (err) {
       return console.log("Erro na busca: ", err);
@@ -20,7 +20,7 @@ module.exports = {
   },
   async getUserByEmail(req, res) {
     try {
-      const user = await Users.findOne({ where: { email: req.email } });
+      const user = await users.findOne({ where: { email: req.email } });
       return user;
     } catch (err) {
       return console.log("Erro na busca: ", err);
@@ -42,7 +42,7 @@ module.exports = {
       token,
     } = req.body;
     try {
-      const user = await Users.create({
+      const user = await users.create({
         name,
         password: await bcryptjs.hash(password, 10),
         address,
@@ -56,7 +56,7 @@ module.exports = {
         email,
         token,
       });
-      return user;
+      return res.json(user);
     } catch (err) {
       return console.error("Erro na criação", err);
     }
@@ -79,11 +79,12 @@ module.exports = {
       email,
     } = req.body;
     const id = req.params.id;
+    encryptedPassword = await bcryptjs.hash(password, 10);
     try {
-      await Users.update(
+      await users.update(
         {
           name,
-          password: await bcryptjs.hash(password, 10),
+          password,
           address,
           rate,
           type_user,

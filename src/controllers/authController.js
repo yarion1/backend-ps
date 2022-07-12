@@ -107,7 +107,7 @@ module.exports = {
     if (oldUser) {
       return res.status(409).send(true);
     } else {
-      res.status(404).send(false);
+      res.status(200).send(false);
     }
   },
 };
