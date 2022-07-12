@@ -38,6 +38,11 @@ module.exports = {
         allowNull: false,
         references: { model: 'Products', key: 'id' }
       },
+      product_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Products', key: 'id' }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
