@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     qtd_stars: DataTypes.INTEGER,
     evaluation: DataTypes.INTEGER,
     category_id: DataTypes.INTEGER,
+    users_name: DataTypes.STRING,
     users_id: DataTypes.INTEGER
   }, {
     sequelize,
